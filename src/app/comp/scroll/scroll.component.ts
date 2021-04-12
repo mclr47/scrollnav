@@ -30,7 +30,7 @@ export interface HashExist {
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-   providers: [{provide: VIRTUAL_SCROLL_STRATEGY,useClass:FixedSizeVirtualScrollStrategy},Location,
+   providers: [{provide: VIRTUAL_SCROLL_STRATEGY,useClass:ScrollDispatcher},Location,
      {provide: LocationStrategy, useClass: PathLocationStrategy}],
      
    
@@ -163,7 +163,7 @@ export class ScrollComponent implements OnInit , AfterViewInit{
       console.log('Platform location .....&&&&& '+this.platformLocation.href);
        this.location.subscribe((frag )=>
       console.log(frag + 'this comes from location *****class constructor and service******'));
-      console.log ('Platform location: ****'+this.platformLocation.getBaseHrefFromDOM());
+      // console.log ('Platform location: ****'+this.platformLocation.getBaseHrefFromDOM());
       if (this.isVisible(document.querySelector('#aaa') as HTMLElement)) {
         this.activeFragment$.next('aaa');
         this.router.navigate(['./scroll'],{fragment:'aaa'});
