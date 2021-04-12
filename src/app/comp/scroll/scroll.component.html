@@ -2,7 +2,12 @@
     <div class="active-fragment">
         Active Fragment: {{activeFragment$ | async}}<br>
         Router active fragment::: {{this.activatedRoute.fragment | async}}<br>
-        SnapShot: {{this.activatedRoute.snapshot.fragment.valueOf()}}<br>
+        <!-- SnapShot: {{this.activatedRoute.snapshot.fragment.valueOf()}}<br> -->
+        <!-- Window.location.hash.valueOf().toString() :{{windowLocation}}<br> -->
+           active from router subscription  :  {{activatedRouteFragment | async}} 
+        <br>
+        spy hash :{{this.spyHash.hashName}}
+        <br>
         Index : {{indexFocus}}
       </div>
     <!-- <p>first scroll</p> -->
