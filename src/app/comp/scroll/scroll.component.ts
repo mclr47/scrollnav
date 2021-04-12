@@ -30,7 +30,7 @@ export interface HashExist {
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-   providers: [{provide: VIRTUAL_SCROLL_STRATEGY,useClass:ScrollDispatcher},Location,
+   providers: [{provide: VIRTUAL_SCROLL_STRATEGY,useClass:FixedSizeVirtualScrollStrategy},Location,
      {provide: LocationStrategy, useClass: PathLocationStrategy}],
      
    
@@ -163,6 +163,7 @@ export class ScrollComponent implements OnInit , AfterViewInit{
       console.log('Platform location .....&&&&& '+this.platformLocation.href);
        this.location.subscribe((frag )=>
       console.log(frag + 'this comes from location *****class constructor and service******'));
+      console.log ('Platform location: ****'+this.platformLocation.getBaseHrefFromDOM());
       if (this.isVisible(document.querySelector('#aaa') as HTMLElement)) {
         this.activeFragment$.next('aaa');
         this.router.navigate(['./scroll'],{fragment:'aaa'});
@@ -235,59 +236,7 @@ export class ScrollComponent implements OnInit , AfterViewInit{
       this.indexFocus = index;
 
       this.router.navigate(['./scroll'],{fragment:this.scrollToPage[index]});
-    //  if(index==0)
-    //      { 
-    //       // this.activeFragment$.next('aaa');
-    //       // this.scroll(0);
-    //       this.router.navigate(['./scroll'],{fragment:this.scrollToPage[0]});
-    //     }
-    //   else if (index == 1 )  
-    //         {  
-    //           this.router.navigate(['./scroll'],{fragment:this.scrollToPage[1]});
-    //           this.activeFragment$.next('bbb');
-    //           // this.scroll(1);
-    //         }
     
-    //  else if (index == 2 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[2]})
-    //       this.activeFragment$.next('ccc');
-    //       // this.scroll(2); 
-    //       }
-    //  else if (index == 3 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[3]})
-    //       this.activeFragment$.next('ddd');
-    //       // this.scroll(3);
-    //     } 
-    // else if (index == 4)
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[4]})
-    //       this.activeFragment$.next('eee');
-    //       // this.scroll(4);
-    //     } 
-    // else if (index == 5 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[5]})
-    //       this.activeFragment$.next('fff');
-    //       // this.scroll(5);
-    //     }  
-    // else if (index == 6 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[6]})
-    //       this.activeFragment$.next('ggg');
-    //       // this.scroll(6);
-    //     } 
-    // else if (index == 7 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[7]})
-    //       this.activeFragment$.next('hhh');
-    //       // this.scroll(7);
-    //     } 
-    // else if (index == 8)
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[8]})
-    //       this.activeFragment$.next('iii');
-    //       // this.scroll(8);
-    //     }   
-    // else if (index == 9 )
-    //       {this.router.navigate(['./scroll'], {fragment:this.scrollToPage[9]})
-    //       this.activeFragment$.next('jjj');
-    //       // this.scroll(9);
-    //     }                            
           
         });
        
